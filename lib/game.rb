@@ -25,6 +25,7 @@ class Game
         board_compo = nil 
         WIN_COMBINATIONS.map do |combo|
             if @board.cells[combo[0]] == "X" && @board.cells[combo[1]] == "X" && @board.cells[combo[2]] == "X"
+                @player_1.is_winner = "yes" 
                 board_compo = combo
             elsif @board.cells[combo[0]] == "O" && @board.cells[combo[1]] == "O" && @board.cells[combo[2]] == "O"
                 board_compo = combo
@@ -45,7 +46,20 @@ class Game
 
     def winner
         if over?()
-            
+            @player_1.is_winner == "yes" ? @player_1.token : @player_2.token
         end
+    end
+
+    def turn
+        puts "Please enter 1-9: "
+        input = current_player.move(@board.cells)
+        if @board.valid_move?(input)
+            @board.update(input, current_player())
+          else
+            turn
+        end
+    end
+
+    def play
     end
 end
