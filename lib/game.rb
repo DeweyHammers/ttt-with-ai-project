@@ -61,5 +61,11 @@ class Game
     end
 
     def play
+        if over?() 
+            puts draw?() ? "Cat's Game!" : "Congratulations #{winner()}!"
+        else 
+            turn()
+            play()
+        end
     end
 end
