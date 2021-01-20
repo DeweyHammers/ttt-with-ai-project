@@ -1,3 +1,6 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+puts "Hello Welcome to Tic Tac Toe!"
+puts "What Type of game would you like to play?"
